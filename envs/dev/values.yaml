@@ -1,0 +1,6 @@
+api:
+  replicas: 1
+  host: "api.vespera.localtest.me"
+
+image:
+  tag: "2617778"
