@@ -18,3 +18,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: vespera-dev
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
