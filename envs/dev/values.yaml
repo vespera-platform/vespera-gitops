@@ -1,5 +1,5 @@
 api:
-  replicas: 1
+  replicas: 2
   host: "api.vespera.localtest.me"
 
 image:
