@@ -3,4 +3,5 @@ api:
   host: "api.vespera.localtest.me"
 
 image:
-  tag: "2617778"
+  repository: ghcr.io/vespera-platform/vespera
+  tag: "3526998f0d19119f9f547a06d425945aa042556e"
