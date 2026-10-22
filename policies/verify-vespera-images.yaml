@@ -1,0 +1,31 @@
+apiVersion: policies.kyverno.io/v1
+kind: ImageValidatingPolicy
+metadata:
+  name: verify-vespera-images
+spec:
+  matchImageReferences:
+    - glob: ghcr.io/vespera-platform/vespera*
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: [v1]
+        operations: ['CREATE', 'UPDATE']
+        resources: ['pods']
+    namespaceSelector:
+      matchLabels:
+        kubernetes.io/metadata.name: vespera-dev
+  failurePolicy: Fail
+  validationActions: [Audit]
+  attestors:
+    - name: cosign
+      cosign:
+        keyless:
+          identities:
+            - issuer: https://token.actions.githubusercontent.com
+              subjectRegExp: '^https://github\.com/vespera-platform/vespera/\.github/workflows/build\.yaml@refs/heads/main$'
+        ctlog:
+          url: 'https://rekor.sigstore.dev'
+  validations:
+    - expression: >-
+        images.containers.map(image, verifyImageSignatures(image, [attestors.cosign])).all(e, e > 0)
+      message: 'obraz nie jest podpisany przez build.yaml z main'
