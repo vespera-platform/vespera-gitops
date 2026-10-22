@@ -3,6 +3,11 @@ kind: ImageValidatingPolicy
 metadata:
   name: verify-vespera-images
 spec:
+  autogen:
+    podControllers:
+      controllers: [ ]
+  failurePolicy: Fail
+  validationActions: [ Audit ]
   matchImageReferences:
     - glob: ghcr.io/vespera-platform/vespera*
   matchConstraints:
@@ -14,8 +19,6 @@ spec:
     namespaceSelector:
       matchLabels:
         kubernetes.io/metadata.name: vespera-dev
-  failurePolicy: Fail
-  validationActions: [Audit]
   attestors:
     - name: cosign
       cosign:
