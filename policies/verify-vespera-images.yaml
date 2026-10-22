@@ -7,7 +7,7 @@ spec:
     podControllers:
       controllers: [ ]
   failurePolicy: Fail
-  validationActions: [ Audit ]
+  validationActions: [ Deny ]
   matchImageReferences:
     - glob: ghcr.io/vespera-platform/vespera*
   matchConstraints:
