@@ -14,7 +14,7 @@ spec:
       helm:
         valuesObject:
           podSecurityStandard: restricted
-          validationFailureAction: Audit
+          validationFailureAction: Enforce
           vpolExclude:
             matchConditions:
               - name: only-vespera
