@@ -1,12 +1,18 @@
 api:
   replicas: 2
   host: "api.vespera.localtest.me"
+
 image:
   repository: ghcr.io/vespera-platform/vespera
   tag: "caabb7467e77595f53c8a3de6692d4e99200b412"
+
 networkPolicy:
   gatewayCIDR: 172.20.0.0/16
   clusterCIDRs:
     - 10.244.0.0/16 # pody
     - 10.96.0.0/16 # serwisy
     - 172.20.0.0/16 # docker network
+
+externalSecret:
+  store: eso-local
+  remoteKey: vespera-db
