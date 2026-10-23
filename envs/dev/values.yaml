@@ -4,3 +4,9 @@ api:
 image:
   repository: ghcr.io/vespera-platform/vespera
   tag: "36fe6801054d236a44d0045121c07765711233a2"
+networkPolicy:
+  gatewayCIDR: 172.20.0.0/16
+  clusterCIDRs:
+    - 10.244.0.0/16 # pody
+    - 10.96.0.0/16 # serwisy
+    - 172.20.0.0/16 # docker network
