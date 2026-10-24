@@ -3,7 +3,7 @@ api:
   host: "api.vespera.localtest.me"
 image:
   repository: ghcr.io/vespera-platform/vespera
-  tag: "00a64326a2ef656e4951219971ad10224cebc104"
+  tag: "0b00257cbf2c14b8343cf1662d284f091beed92e"
 networkPolicy:
   gatewayCIDR: 172.20.0.0/16
   clusterCIDRs:
