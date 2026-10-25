@@ -15,7 +15,7 @@ spec:
       helm:
         valuesObject:
           grafana:
-            enabled: false
+            enabled: true
           prometheus:
             prometheusSpec:
               retention: 2d
