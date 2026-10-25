@@ -20,8 +20,22 @@ spec:
             prometheusSpec:
               retention: 2d
               serviceMonitorSelectorNilUsesHelmValues: false
+              ruleSelectorNilUsesHelmValues: false
           alertmanager:
-            enabled: false
+            enabled: true
+            config:
+              route:
+                receiver: vespera-sim
+                group_by: ['alertname']
+                group_wait: 30s
+                group_interval: 5m
+                repeat_interval: 1h
+              receivers:
+                - name: 'null'
+                - name: vespera-sim
+                  webhook_configs:
+                    - url: http://target-sim.vespera-dev.svc:8000/hook
+                      send_resolved: true
           nodeExporter:
             enabled: false
           kubeStateMetrics:
