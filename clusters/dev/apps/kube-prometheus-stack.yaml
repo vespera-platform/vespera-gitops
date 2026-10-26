@@ -16,6 +16,11 @@ spec:
         valuesObject:
           grafana:
             enabled: true
+            additionalDataSources:
+              - name: Loki
+                type: loki
+                uid: loki
+                url: http://loki.monitoring.svc:3100
           prometheus:
             prometheusSpec:
               retention: 2d
