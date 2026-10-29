@@ -24,7 +24,7 @@ spec:
           prometheus:
             prometheusSpec:
               retention: 2d
-              serviceMonitorSelectorNilUsesHelmValues: false
+              podMonitorSelectorNilUsesHelmValues: false
               ruleSelectorNilUsesHelmValues: false
           alertmanager:
             enabled: true
