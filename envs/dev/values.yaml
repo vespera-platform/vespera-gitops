@@ -1,7 +1,7 @@
 api:
   replicas: 2
   host: "api.vespera.localtest.me"
-  faultErrorRate: 0
+  faultErrorRate: 0.3
 image:
   repository: ghcr.io/vespera-platform/vespera
   tag: "977149b8c75de021fd6492aa5acedb6cd1bb3f33"
