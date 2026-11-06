@@ -5,7 +5,7 @@ provider "helm" {
     exec = {
       api_version = "client.authentication.k8s.io/v1beta1"
       command     = "aws"
-      args        = ["eks", "get-token", "--cluster-name", module.eks.cluster_name, "--region", "eu-north-1", "--role-arn", "arg:aws:iam::835780010951:role/vespera-terraform"]
+      args        = ["eks", "get-token", "--cluster-name", module.eks.cluster_name, "--region", "eu-north-1", "--role-arn", "arn:aws:iam::835780010951:role/vespera-terraform"]
     }
   }
 }
