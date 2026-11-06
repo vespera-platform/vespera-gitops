@@ -17,8 +17,10 @@ spec:
         operations: ['CREATE', 'UPDATE']
         resources: ['pods']
     namespaceSelector:
-      matchLabels:
-        kubernetes.io/metadata.name: vespera-dev
+      matchExpressions:
+        - key: kubernetes.io/metadata.name
+          operator: In
+          values: [vespera-dev, vespera-staging]
   attestors:
     - name: cosign
       cosign:

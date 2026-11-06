@@ -1,0 +1,15 @@
+api:
+  replicas: 2
+  host: api.staging.vespera.invalid
+  faultErrorRate: 0
+image:
+  repository: ghcr.io/vespera-platform/vespera
+  tag: "977149b8c75de021fd6492aa5acedb6cd1bb3f33"
+networkPolicy:
+  gatewayCIDR: 10.0.0.0/16
+  clusterCIDRs:
+    - 10.0.0.0/16
+    - 172.20.0.0/16
+externalSecret:
+  store: aws-secrets-manager
+  remoteKey: vespera/staging/db

@@ -8,11 +8,19 @@ module "eks" {
   endpoint_public_access                   = true
   endpoint_public_access_cidrs             = ["185.164.142.227/32"]
   enable_cluster_creator_admin_permissions = true
-  enable_irsa = false
+  enable_irsa                              = false
+
   addons = {
-    coredns    = {}
-    kube-proxy = {}
-    vpc-cni    = { before_compute = true }
+    coredns                = {}
+    kube-proxy             = {}
+    vpc-cni                = { before_compute = true }
+    eks-pod-identity-agent = { before_compute = true }
+    aws-ebs-csi-driver = {
+      pod_identity_association = [{
+        role_arn        = aws_iam_role.ebs_csi.arn
+        service_account = "ebs-csi-controller-sa"
+      }]
+    }
   }
 
   eks_managed_node_groups = {
