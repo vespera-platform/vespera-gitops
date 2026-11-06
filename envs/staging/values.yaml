@@ -13,3 +13,5 @@ networkPolicy:
 externalSecret:
   store: aws-secrets-manager
   remoteKey: vespera/staging/db
+gateway:
+  className: envoy-gateway
