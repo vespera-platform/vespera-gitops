@@ -1,0 +1,81 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: loki
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/compare-options: ServerSideDiff=true
+spec:
+  project: default
+  sources:
+    - repoURL: https://grafana-community.github.io/helm-charts
+      chart: loki
+      targetRevision: 20.0.0
+      helm:
+        valuesObject:
+          loki:
+            auth_enabled: false
+            commonConfig:
+              replication_factor: 1
+            storage:
+              type: filesystem
+            schemaConfig:
+              configs:
+                - from: "2024-04-01"
+                  store: tsdb
+                  object_store: filesystem
+                  schema: v13
+                  index:
+                    prefix: index_
+                    period: 24h
+          singleBinary:
+            replicas: 1
+          chunksCache:
+            enabled: false
+          resultsCache:
+            enabled: false
+          lokiCanary:
+            enabled: false
+          test:
+            enabled: false
+          gateway:
+            enabled: false
+          backend:
+            replicas: 0
+          read:
+            replicas: 0
+          write:
+            replicas: 0
+          ingester:
+            replicas: 0
+          querier:
+            replicas: 0
+          queryFrontend:
+            replicas: 0
+          queryScheduler:
+            replicas: 0
+          distributor:
+            replicas: 0
+          compactor:
+            replicas: 0
+          indexGateway:
+            replicas: 0
+          bloomPlanner:
+            replicas: 0
+          bloomBuilder:
+            replicas: 0
+          bloomGateway:
+            replicas: 0
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+
