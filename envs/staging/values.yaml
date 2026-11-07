@@ -17,4 +17,4 @@ gateway:
   className: envoy-gateway
   tls:
     enabled: true
-    inssuer: letsencrypt-staging
+    issuer: letsencrypt-staging
