@@ -1,6 +1,6 @@
 api:
   replicas: 2
-  host: api.staging.vespera.invalid
+  host: api.staging.vespera.oski-training-lab.site
   faultErrorRate: 0
 image:
   repository: ghcr.io/vespera-platform/vespera
