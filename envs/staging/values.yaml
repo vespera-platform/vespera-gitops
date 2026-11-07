@@ -15,3 +15,6 @@ externalSecret:
   remoteKey: vespera/staging/db
 gateway:
   className: envoy-gateway
+  tls:
+    enabled: true
+    inssuer: letsencrypt-staging
