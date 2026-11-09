@@ -20,7 +20,7 @@ spec:
       matchExpressions:
         - key: kubernetes.io/metadata.name
           operator: In
-          values: [vespera-dev, vespera-staging]
+          values: [vespera-dev, vespera-staging, vespera-prod]
   attestors:
     - name: cosign
       cosign:

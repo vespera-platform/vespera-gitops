@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vespera-prod
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/vespera-platform/vespera.git
+      path: charts/vespera
+      targetRevision: main
+      helm:
+        valueFiles:
+          - $values/envs/prod/values.yaml
+    - repoURL: https://github.com/vespera-platform/vespera-gitops.git
+      targetRevision: main
+      ref: values
+    - repoURL: https://github.com/vespera-platform/vespera-gitops.git
+      targetRevision: main
+      path: envs/prod/namespace
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: vespera-prod
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true

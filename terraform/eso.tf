@@ -53,3 +53,18 @@ resource "aws_secretsmanager_secret_version" "db" {
   secret_string_wo_version = 1
 }
 
+ephemeral "random_password" "db_prod" {
+  length  = 32
+  special = false
+}
+
+resource "aws_secretsmanager_secret" "db_prod" {
+  name                    = "vespera/prod/db"
+  recovery_window_in_days = 0
+}
+
+resource "aws_secretsmanager_secret_version" "db_prod" {
+  secret_id                = aws_secretsmanager_secret.db_prod.id
+  secret_string_wo         = jsonencode({ password = ephemeral.random_password.db_prod.result })
+  secret_string_wo_version = 1
+}
