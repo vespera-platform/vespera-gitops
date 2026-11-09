@@ -2,6 +2,8 @@ api:
   replicas: 2
   host: api.staging.vespera.oski-training-lab.site
   faultErrorRate: 0
+  rollout:
+    analysis: false
 image:
   repository: ghcr.io/vespera-platform/vespera
   tag: "5e465c20d0898e0b57d868f3712178272641f8aa"
