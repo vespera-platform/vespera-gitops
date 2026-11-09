@@ -17,6 +17,9 @@ spec:
     - repoURL: https://github.com/vespera-platform/vespera-gitops.git
       targetRevision: main
       ref: values
+    - repoURL: https://github.com/vespera-platform/vespera-gitops.git
+      targetRevision: main
+      path: envs/staging/namespace
   destination:
     server: https://kubernetes.default.svc
     namespace: vespera-staging
