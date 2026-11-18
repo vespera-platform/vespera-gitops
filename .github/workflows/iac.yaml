@@ -1,0 +1,25 @@
+name: IaC
+on:
+  pull_request:
+    branches:
+      - main
+permissions: {}
+jobs:
+  terraform-scan:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - name: checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: trivy config (terraform)
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          scan-type: config
+          scan-ref: terraform/
+          severity: HIGH,CRITICAL
+          exit-code: "1"
+          format: table
