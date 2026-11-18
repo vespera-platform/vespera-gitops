@@ -18,6 +18,8 @@ jobs:
       - name: trivy config (terraform)
         uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:
+          version: v0.76.2
+          trivyignores: .trivyignore
           scan-type: config
           scan-ref: terraform/
           severity: HIGH,CRITICAL
