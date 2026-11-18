@@ -6,9 +6,11 @@ module "eks" {
   vpc_id                                   = module.vpc.vpc_id
   subnet_ids                               = module.vpc.private_subnets
   endpoint_public_access                   = true
-  endpoint_public_access_cidrs             = ["185.164.142.227/32"]
+  endpoint_public_access_cidrs             = [var.admin_cidr]
   enable_cluster_creator_admin_permissions = true
   enable_irsa                              = false
+  enabled_log_types                        = ["audit", "authenticator"]
+  cloudwatch_log_group_retention_in_days   = 3
 
   addons = {
     coredns                = {}
