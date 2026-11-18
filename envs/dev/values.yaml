@@ -4,7 +4,7 @@ api:
   faultErrorRate: 0
 image:
   repository: ghcr.io/vespera-platform/vespera
-  tag: "fc99da342088ec994b5cc4654207d5b357ef576b"
+  tag: "b0a49c2f694707f54c22f41960d47ccc5038faa5"
 networkPolicy:
   gatewayCIDR: 172.20.0.0/16
   clusterCIDRs:
