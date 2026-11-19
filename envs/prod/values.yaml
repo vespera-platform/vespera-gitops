@@ -14,7 +14,7 @@ externalSecret:
   store: aws-secrets-manager
   remoteKey: vespera/prod/db
 gateway:
-  className: envoy-gateway
+  className: envoy-gateway-internal
   tls:
     enabled: true
     issuer: letsencrypt-staging
