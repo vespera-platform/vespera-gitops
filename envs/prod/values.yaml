@@ -3,7 +3,7 @@ api:
   host: api.vespera.oski-training-lab.site
   faultErrorRate: 0
   rollout:
-    strategy: rolling
+    strategy: canary
 image:
   repository: ghcr.io/vespera-platform/vespera
   tag: "8d662721822f84abc37a50790fed09daaeaa09dc"
