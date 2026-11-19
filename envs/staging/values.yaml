@@ -6,7 +6,7 @@ api:
     analysis: false
 image:
   repository: ghcr.io/vespera-platform/vespera
-  tag: "b0a49c2f694707f54c22f41960d47ccc5038faa5"
+  tag: "faa41efcbdfa0e8fb6720c78a17537f9929f1a99"
 networkPolicy:
   gatewayCIDR: 10.0.0.0/16
   clusterCIDRs:
