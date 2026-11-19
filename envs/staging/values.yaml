@@ -20,3 +20,5 @@ gateway:
   tls:
     enabled: true
     issuer: letsencrypt-staging
+postDeployTest:
+  enabled: true
