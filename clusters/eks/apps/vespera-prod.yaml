@@ -15,7 +15,7 @@ spec:
         valueFiles:
           - $values/envs/prod/values.yaml
     - repoURL: https://github.com/vespera-platform/vespera-gitops.git
-      targetRevision: eval/pomiary
+      targetRevision: main
       ref: values
     - repoURL: https://github.com/vespera-platform/vespera-gitops.git
       targetRevision: main
