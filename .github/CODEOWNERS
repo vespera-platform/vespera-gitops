@@ -1,2 +1,3 @@
-/envs/prod/                           @trolelk
-/clusters/eks/apps/vespera-prod.yaml  @trolelk
+*                           @trolelk
+/envs/dev/values.yaml
+/envs/staging/values.yaml
