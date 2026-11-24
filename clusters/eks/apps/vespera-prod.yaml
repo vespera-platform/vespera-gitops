@@ -10,7 +10,7 @@ spec:
   sources:
     - repoURL: https://github.com/vespera-platform/vespera.git
       path: charts/vespera
-      targetRevision: "fa47fb46bab156e24d7a1d4f20687d12f6580c55"
+      targetRevision: "bd1f77a20822f5b14ffdc2cb1cc46dc2c871e34d"
       helm:
         valueFiles:
           - $values/envs/prod/values.yaml
